@@ -1,5 +1,5 @@
-#include <libxml2/libxml/parser.h>  
-#include <libxml2/libxml/tree.h>  
+#include <libxml/parser.h>  
+#include <libxml/tree.h>  
   
 int main(int argc, char* argv[])  
 {  
@@ -33,7 +33,6 @@ int main(int argc, char* argv[])
        xmlFreeDoc(doc);  
        return -1;  
     }  
-    //curNode = curNode->children;
     curNode = curNode->xmlChildrenNode;
     while(curNode != NULL)  
     {  
