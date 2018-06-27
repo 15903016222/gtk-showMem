@@ -4,25 +4,31 @@
 static void hello( GtkWidget *widget,
                    gpointer   data )
 {
-	GtkWidget *dialog;
-	GtkDialogFlags flags = GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT;
-    
-	g_print ("Hello World\n");
-	// 创建对话框窗口
-	dialog = gtk_dialog_new_with_buttons ("my dialog",
+	GtkWidget *dialog, *label;
+	GtkDialogFlags flags;
+
+	// Create the widgets
+	flags = GTK_DIALOG_DESTROY_WITH_PARENT;
+	dialog = gtk_dialog_new_with_buttons ("Storage Info",
 										  NULL,
 										  flags,
-										  ("_Ok"),
-										  GTK_RESPONSE_ACCEPT,
-										  ("_Cancel"),
-										  GTK_RESPONSE_REJECT,
+										  ("_OK"),
+										  GTK_RESPONSE_OK,
 										  NULL);
-    // 调整对话框大小
-	gtk_widget_set_size_request (dialog,
-				                 800,
-								 600);
+	
+	// Ensure that the dialog box is destroyed when the user responds
+	g_signal_connect_swapped (dialog,
+						  "response",
+						  G_CALLBACK (gtk_widget_destroy),
+						  dialog);
 
-	gtk_widget_show (dialog);
+	// Set dialog size
+	gtk_widget_set_size_request (dialog,
+							      600,
+								  400);
+
+	// Add the label, and show everything we’ve added
+	gtk_dialog_run (GTK_DIALOG (dialog));
 }
 
 static gboolean delete_event( GtkWidget *widget,
