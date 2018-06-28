@@ -1,3 +1,2 @@
-arm-angstrom-linux-gnueabi-gcc parserXmlFile.c -o parserXmlFile -I/stuff/bitbake/bin/tmp/sysroots/i686-linux/usr/include/libxml2/ -lxml2
-
+# 使用gtk+-2.0显示存储模块信息
 
