@@ -26,7 +26,7 @@ get_disk_info()
 
 test -f "$FILE" && rm "$FILE"
 
-contents=`mount | awk '{print $1}' | grep "root\|/dev/sd\|/dev/mmc"`
+contents=`mount | awk '{print $1}' | grep "rootfs\|/dev/sd\|/dev/mmc"`
 
 echo "<disks>" > $FILE
 for content in `echo $contents`
