@@ -3,4 +3,6 @@
 
 extern void show_mem_info (void);
 
+extern GtkWidget *mem_window;
+
 #endif // __SHOWMEM_H__
