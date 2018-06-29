@@ -12,11 +12,12 @@ void show_mem_info (void) {
 	
 	mem_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title (GTK_WINDOW (mem_window), "Storage Info");
-	gtk_window_set_default_size (GTK_WINDOW (mem_window), 400, 240);
+	gtk_widget_set_size_request (mem_window, 400, 300);
 	gtk_window_set_position (GTK_WINDOW (mem_window), GTK_WIN_POS_CENTER);
-	gtk_container_set_border_width (GTK_CONTAINER (mem_window), 20);
+	gtk_window_set_resizable (GTK_WINDOW (mem_window), FALSE);
+	gtk_container_set_border_width (GTK_CONTAINER (mem_window), 10);
 
-	GtkWidget *mem_box = gtk_vbox_new (FALSE,0);
+	GtkWidget *mem_box = gtk_vbox_new (FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (mem_window), mem_box);
 
 	GtkWidget *system_frame = gtk_frame_new ("System");
