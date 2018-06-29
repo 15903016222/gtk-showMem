@@ -21,8 +21,14 @@ get_disk_info()
 	if [ "/" == "$disk" ]
 	then
 		disk="system"
-	else
-		disk=${disk##*/}
+	elif [ "/home/tt/TT/data" == "$disk" ]
+	then
+		# disk=${disk##*/}
+		disk="doppler"
+	elif [ "/opt/usbStorage" == "$disk" ]
+	then
+		# disk=${disk##*/}
+		disk="usb"
 	fi
 }
 
