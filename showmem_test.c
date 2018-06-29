@@ -12,11 +12,6 @@ int main(int argc, char *argv[])
 	 */
 	show_mem_info ();
 
-	g_signal_connect (mem_window, 
-					  "destroy", 
-					  G_CALLBACK(gtk_main_quit), 
-					  NULL);
-
 	gtk_main(); 	// 主事件循环
  
     return 0; 

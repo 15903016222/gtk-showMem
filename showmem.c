@@ -33,8 +33,6 @@ struct memory_dialog {
 	struct disk_info mem_info;
 };
 
-GtkWidget *window;
-
 void  show_mem_info (void);
 static void  init_window (struct memory_dialog *dialog);
 static void *get_mem_file (void *);
@@ -231,7 +229,6 @@ void show_mem_info (void)
 	if (NULL == mem_dialog) {
 		exit (-1);
 	}
-	window = mem_dialog->mem_ui.mem_window;
 
 	// 初始化窗口
 	init_window (mem_dialog);
