@@ -29,6 +29,8 @@ get_disk_info()
 	then
 		# disk=${disk##*/}
 		disk="usb"
+	else
+		disk=${disk##*/}
 	fi
 }
 
