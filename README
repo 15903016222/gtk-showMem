@@ -1,2 +1,4 @@
 # 使用gtk+-2.0显示存储模块信息
 
+编译：
+	gcc showmem_test.c showmem.c -I/usr/include/libxml2 -lxml2 `pkg-config --cflags --libs gtk+-2.0`
