@@ -1,15 +1,28 @@
 #!/bin/bash
 
-FILE="/tmp/mem.xml"
+FILE="/tmp/mem.html"
 
-write_xml()
+write_html_head() 
 {
-	echo "<disk>" >> $FILE
-	echo "<name>$1</name>" >> $FILE
-	echo "<total>$2</total>" >> $FILE
-	echo "<used>$3</used>" >> $FILE
-	echo "<free>$4</free>" >> $FILE
-	echo "</disk>" >> $FILE
+	echo "<html>" > $FILE
+	echo "<head>" >> $FILE
+	echo "<title>存储磁盘容量信息</title>" >> $FILE
+	echo "</head>" >> $FILE
+	echo "<body>" >> $FILE
+}
+
+write_html_tail()
+{
+	echo "</body>" >> $FILE
+	echo "</html>" >> $FILE
+}
+
+write_html()
+{
+	echo "<p align=\"center\">$1" >> $FILE
+	echo "总容量:$2" >> $FILE
+	echo "已使用:$3" >> $FILE
+	echo "剩余:$4 </p>" >> $FILE 
 }
 
 get_disk_info()
@@ -35,13 +48,12 @@ get_disk_info()
 }
 
 test -f "$FILE" && rm "$FILE"
-
 contents=`mount | awk '{print $1}' | grep "rootfs\|/dev/sd\|/dev/mmc"`
 
-echo "<disks>" > $FILE
+write_html_head
 for content in `echo $contents`
 do
 	get_disk_info $content
-	write_xml $disk $total $used $free
+	write_html $disk $total $used $free
 done
-echo "</disks>" >> $FILE
+write_html_tail
