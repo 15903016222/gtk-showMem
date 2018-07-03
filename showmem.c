@@ -117,7 +117,7 @@ static void init_window (struct memory_dialog *dialog) {
 
 static void *get_mem_file (void *p) 
 {
-	system ("/bin/bash getMem.sh");
+	system ("/bin/sh /usr/bin/getMem.sh");
 	return p;
 }
 
